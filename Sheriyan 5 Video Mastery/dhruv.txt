@@ -1,0 +1,72 @@
+   Dynamic Routing like /user/dhruv or /user/harsh
+for this we use /user/:username (:username) this is a variable name
+and we can get this value by using {req.params.username}
+
+
+data passing in ejs is done by the second argument of the render function and it takes the value in an object form
+E.g -> app.render('profile', {name: 'Dhruv', age: 12})
+and we can use this values in profile.ejs file in this form <%= name%> and <%= age%>
+
+Express Generator used for proving the basic file and folder structure 
+1. firstly installing it globally
+	npm i express-generator -g
+2. to create a new app anywhere
+	express appname --view=ejs
+3. move to that folder 
+	cd appname
+	npm i 
+to run the files in this folder we use this command
+	npx nodemon
+
+using mongodb with express
+1. installing mongoose package
+	npm i mongoose
+2. require mongoose and connect mongodb
+	const mongoose = require("mongoose")
+	mongoose.connect("mongodb://127.0.0.1:27017/dbname")
+3. creating a schema 
+	const userSchema = mongoose.Schema({
+		username: String,
+		name: String,
+		age: Number
+	})
+	
+	module.exports = mongoose.model("Users", userSchema) // this creates a collection with the name Users
+
+Sessions in express
+1. installing package for sessions
+	npm i express-session
+2. using sessions
+	const session = require('express-session')
+	app.use(session({
+		resave: false,
+		saveUninitialized: false,
+		secret: "abcdef"
+	}))
+3. setting data in session
+	req.session.name = "Dhruv"
+3. using session data 
+	req.session.name
+4. destroying a session
+	req.session.destroy()
+
+Cookie in express
+1. installing package but not needed if you create it by express generator
+	npm i cookie-parser
+2. Setup cookie
+	app.use(cookieParser())
+3. Setting data on cookie
+	res.cookie(key, value) E.g -> res.cookie("age", 25)
+4. reading cookies data
+	req.cookies
+5. daleting or destroying a cookie 
+	res.clearCookie(key) E.g -> res.clearCookie("age")
+
+
+Regex for string matching
+^ -> this matches the starting of a string
+$ -> this matches the ending of a string
+
+for E.g -> ^Dhruv$ // this will only matches the exact match of the string Dhruv
+
+new RegExp(search, flags) E.g -> const regex = new RegExp("Dhruv", "i") // this will create a regex expression to make this word "Dhruv" case insensitive

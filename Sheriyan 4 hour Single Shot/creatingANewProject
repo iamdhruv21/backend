@@ -1,0 +1,9 @@
+Creating a project Manually
+
+1. npm init -y --> this will create package.json file
+2. install all dependencies/Packages like express, mongoose, ejs and any other --> npm i express
+3. create app.js file ready to go
+4. to run a file --> node fileName    using this we have to run the server again and again so instead of this we use
+5. npx nodemon fileName     this command.
+6. Or we can make our own command By adding "start": "npx nodemon app.js" this in the Script section of the package.json file
+   after this we can run simply by running --> npm start
